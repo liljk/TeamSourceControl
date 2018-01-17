@@ -10,4 +10,5 @@
 	,BirthDate datetime NULL
 	--Student Address
 	,StudentAddress varchar NULL
+	--more if needed
 )
