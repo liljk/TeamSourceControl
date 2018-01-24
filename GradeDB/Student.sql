@@ -1,14 +1,20 @@
 ﻿CREATE TABLE dbo.Student
 (
-    --Student ID
 	StudentID int NOT NULL
-	--Student First Name
 	,StudentFName varchar NOT NULL
-	--Student Last Name
 	,StudentLName varchar NOT NULL
-	--Student Birth date
 	,BirthDate datetime NULL
-	--Student Address
 	,StudentAddress varchar NULL
-	--more if needed
 )
+
+INSERT INTO Student (StudentFName, StudentLName, BirthDate, StudentAddress)
+VALUES ('Jae', 'Kwak', 7/1/1989, '1234 176th ave, Lakewood, WA, 98466')
+
+
+UPDATE Student
+SET StudentFName = 'Taylor'
+	, StudentLName = 'Something'
+	, BirthDate = 1/1/1900
+	,StudentAddress = '1111 11ST, Lakewood, WA, 98466'
+WHERE StudentID = 2
+
