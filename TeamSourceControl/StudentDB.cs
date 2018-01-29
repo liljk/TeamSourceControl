@@ -9,7 +9,7 @@ namespace TeamSourceControl
 {
     class StudentDB
     {
-        public static List<Student> GetAllCharacters()
+        public static List<Student> GetAllStudent()
         {
             var selCommand = new SqlCommand();
             selCommand.Connection = StuDB.GetConnection();
@@ -43,7 +43,7 @@ namespace TeamSourceControl
             }
         }
 
-        public static bool UpdateCharacter(Student currStu)
+        public static bool UpdateStudent(Student currStu)
         {
             SqlCommand updateCmd = new SqlCommand();
             updateCmd.CommandText = "UPDATE Student" +
