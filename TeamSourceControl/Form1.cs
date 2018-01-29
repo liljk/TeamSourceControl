@@ -34,7 +34,7 @@ namespace TeamSourceControl
                 try
                 {
                     SqlConnection con = new SqlConnection();
-                    StuDB.GetConnection();
+                    con = StuDB.GetConnection();
                     con.Open();
                     SqlCommand cmd = new SqlCommand("select * from Student", con);
                     SqlDataReader r = cmd.ExecuteReader();
@@ -61,6 +61,12 @@ namespace TeamSourceControl
                     Show();
                 }
             }
+        }
+
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            var displayAddStudent = new frmAddStudent();
+            displayAddStudent.Show();
         }
     }
 }
