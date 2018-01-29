@@ -97,7 +97,7 @@ namespace TeamSourceControl
             {
                 dbConnection.Open();
                 int rowsAffected = addCommand.ExecuteNonQuery();
-                //GameCharacter added successfully
+                //Student added successfully
                 if (rowsAffected == 1)
                     return true;
 
@@ -125,7 +125,7 @@ namespace TeamSourceControl
             {
                 con.Open();
                 int rowsAffected = delCmd.ExecuteNonQuery();
-                //check that one character was deleted
+                //check that one student was deleted
                 if (rowsAffected == 1)
                     return true;
                 return false;

@@ -1,21 +1,14 @@
-﻿CREATE TABLE dbo.Student
+﻿CREATE DATABASE StudentDB
+GO
+
+USE StudentDB
+GO
+
+CREATE TABLE Students
 (
-	StudentID int NOT NULL
-	,StudentFName varchar NOT NULL
-	,StudentLName varchar NOT NULL
+	StudentID int PRIMARY KEY Identity NOT NULL
+	,StudentFName varchar(50) NOT NULL
+	,StudentLName varchar(50) NOT NULL
 	,BirthDate datetime NULL
-	,StudentAddress varchar NULL
+	,StudentAddress varchar(100) NULL
 )
-
-INSERT INTO Student (StudentFName, StudentLName, BirthDate, StudentAddress)
-VALUES ('Jae', 'Kwak', 'ThisIsMyPassword12', 7/1/1989, '1234 176th ave, Lakewood, WA, 98466')
-
-
-UPDATE Student
-SET StudentFName = 'Taylor'
-	, StudentPassword = 'ThisIsntMyPassword'
-	, StudentLName = 'Something'
-	, BirthDate = 1/1/1900
-	,StudentAddress = '1111 11ST, Lakewood, WA, 98466'
-WHERE StudentID = 2
-
