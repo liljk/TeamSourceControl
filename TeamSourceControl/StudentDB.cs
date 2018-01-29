@@ -14,7 +14,7 @@ namespace TeamSourceControl
             var selCommand = new SqlCommand();
             selCommand.Connection = StuDB.GetConnection();
             selCommand.CommandText =
-                "SELECT StudentID, StudentPassword, StudentFName, StudentLName, BirthDate, StudentAddress" +
+                "SELECT StudentID, StudentPassword, StudentFName, StudentLName, BirthDate, StudentEmail" +
                 "FROM Student";
 
             try
@@ -32,7 +32,7 @@ namespace TeamSourceControl
                     Stu.StudentFName = (string)rdr["FirstName"];
                     Stu.StudentLName = (string)rdr["LastName"];
                     Stu.BirthDate = (DateTime)rdr["BirthDate"];
-                    Stu.StudentAddress = (char)rdr["Address"];
+                    Stu.StudentEmail = (string)rdr["Email"];
                     studentList.Add(Stu);
                 }
 
@@ -52,13 +52,13 @@ namespace TeamSourceControl
                                     "StudentPassword = @Password, " +
                                     "StudentLName = @LastName, " +
                                     "BirthDate = @BirthDate, " +
-                                    "Adrress = @Address " +
+                                    "Email = @Email, " +
                                     "WHERE StudentID = @StudentID";
 
             updateCmd.Parameters.AddWithValue("@FirstName", currStu.StudentFName);
             updateCmd.Parameters.AddWithValue("@LastName", currStu.StudentLName);
             updateCmd.Parameters.AddWithValue("@BirthDate", currStu.BirthDate);
-            updateCmd.Parameters.AddWithValue("@Address", currStu.StudentAddress);
+            updateCmd.Parameters.AddWithValue("@Email", currStu.StudentEmail);
             updateCmd.Parameters.AddWithValue("@id", currStu.StudentID);
             updateCmd.Parameters.AddWithValue("@Password", currStu.StudentPassword);
 
@@ -83,14 +83,14 @@ namespace TeamSourceControl
             SqlCommand addCommand = new SqlCommand();
             addCommand.Connection = dbConnection;
             addCommand.CommandText = "INSERT INTO Student " +
-           "(StudentFName, StudentLName, BirthDate, Address, Password)" +
+           "(StudentFName, StudentLName, BirthDate, Email, Password)" +
            "VALUES" +
-           "(@FirstName, @LastName, @BirthDate, @Address, @Password)";
+           "(@FirstName, @LastName, @BirthDate, @Email, @Password)";
 
             addCommand.Parameters.AddWithValue("@FirstName", newStu.StudentFName);
             addCommand.Parameters.AddWithValue("@LastName", newStu.StudentLName);
             addCommand.Parameters.AddWithValue("@BirthDate", newStu.BirthDate);
-            addCommand.Parameters.AddWithValue("@Address", newStu.StudentAddress);
+            addCommand.Parameters.AddWithValue("@Email", newStu.StudentEmail);
             addCommand.Parameters.AddWithValue("@Password", newStu.StudentPassword);
 
             try

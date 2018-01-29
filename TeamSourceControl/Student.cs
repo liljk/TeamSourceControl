@@ -18,6 +18,6 @@ namespace TeamSourceControl
 
         public DateTime BirthDate { get; set; }
 
-        public char StudentAddress { get; set; }
+        public string StudentEmail { get; set; }
     }
 }
