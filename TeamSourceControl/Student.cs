@@ -14,6 +14,8 @@ namespace TeamSourceControl
 
         public string StudentLName { get; set; }
 
+        public string StudentPassword { get; set; }
+
         public DateTime BirthDate { get; set; }
 
         public char StudentAddress { get; set; }
