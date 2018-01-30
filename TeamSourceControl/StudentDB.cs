@@ -15,7 +15,7 @@ namespace TeamSourceControl
             selCommand.Connection = StuDB.GetConnection();
             selCommand.CommandText =
                 "SELECT StudentID, StudentPassword, StudentFName, StudentLName, BirthDate, StudentEmail" +
-                "FROM Student";
+                "FROM Students";
 
             try
             {
@@ -47,7 +47,7 @@ namespace TeamSourceControl
         public static bool UpdateStudent(Student currStu)
         {
             SqlCommand updateCmd = new SqlCommand();
-            updateCmd.CommandText = "UPDATE Student" +
+            updateCmd.CommandText = "UPDATE Students" +
                                     "SET StudentFName = @FirstName, " +
                                     "StudentPassword = @Password, " +
                                     "StudentLName = @LastName, " +
@@ -82,7 +82,7 @@ namespace TeamSourceControl
 
             SqlCommand addCommand = new SqlCommand();
             addCommand.Connection = dbConnection;
-            addCommand.CommandText = "INSERT INTO Student " +
+            addCommand.CommandText = "INSERT INTO Students " +
            "(StudentFName, StudentLName, BirthDate, Email, Password)" +
            "VALUES" +
            "(@FirstName, @LastName, @BirthDate, @Email, @Password)";
