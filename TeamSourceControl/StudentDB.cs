@@ -83,7 +83,7 @@ namespace TeamSourceControl
             SqlCommand addCommand = new SqlCommand();
             addCommand.Connection = dbConnection;
             addCommand.CommandText = "INSERT INTO Students " +
-           "(StudentFName, StudentLName, BirthDate, Email, Password)" +
+           "(StudentFName, StudentLName, BirthDate, StudentEmail, StudentPassword)" +
            "VALUES" +
            "(@FirstName, @LastName, @BirthDate, @Email, @Password)";
 
@@ -117,7 +117,7 @@ namespace TeamSourceControl
 
             SqlCommand delCmd = new SqlCommand();
             delCmd.Connection = con;
-            delCmd.CommandText = "DELETE FROM Student " +
+            delCmd.CommandText = "DELETE FROM Students " +
                                  "WHERE StudentID=@StudentID";
             delCmd.Parameters.AddWithValue("@StudentID", stu.StudentID);
 
