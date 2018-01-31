@@ -11,4 +11,5 @@ CREATE TABLE Students
 	,StudentLName varchar(50) NOT NULL
 	,BirthDate datetime NULL
 	,StudentAddress varchar(100) NULL
+	,StudentPassword varchar(50) NOT NULL
 )
