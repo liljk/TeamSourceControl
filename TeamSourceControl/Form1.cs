@@ -21,44 +21,56 @@ namespace TeamSourceControl
         private void btnLogin_Click(object sender, EventArgs e)
         {
             int valid = 0;
-            if(string.IsNullOrEmpty(txtID.Text) | string.IsNullOrEmpty(txtPassword.Text)){
+            if (string.IsNullOrEmpty(txtID.Text) | string.IsNullOrEmpty(txtPassword.Text))
+            {
                 MessageBox.Show("Please enter User ID and Password");
                 valid = 1;
             }
-
-            int exists = 0;
-            string password = null;
-
-            if (valid == 0)
+            else
             {
-                try
+
+                int exists = 0;
+                string password = null;
+
+                if (valid == 0)
                 {
                     SqlConnection con = new SqlConnection();
                     con = StuDB.GetConnection();
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("select * from Student", con);
-                    SqlDataReader r = cmd.ExecuteReader();
-                    while (r.Read())
+                    try
                     {
-                        if (txtID.Text == r["StudentID"].ToString().Trim())
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("select * from Students", con);
+                        SqlDataReader r = cmd.ExecuteReader();
+                        while (r.Read())
                         {
-                            exists = 1;
-                            password = r["StudentPassword"].ToString().Trim();
+                            if (txtID.Text == r["StudentID"].ToString().Trim())
+                            {
+                                exists = 1;
+                                password = r["StudentPassword"].ToString().Trim();
+                            }
                         }
                     }
-                    con.Close();
+                    finally
+                    {
+                        con.Dispose();
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Unable to connect to database at this time");
-                }
-            }
 
-            if(exists == 1)
-            {
-                if(txtPassword.Text == password)
+                if (exists == 1)
                 {
-                    Show();
+                    if (txtPassword.Text == password)
+                    {
+                        var frmGradesForm = new frmGradesForm();
+                        frmGradesForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Username or Password");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Username or Password");
                 }
             }
         }

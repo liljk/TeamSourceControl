@@ -34,6 +34,8 @@ namespace TeamSourceControl
                 newStu.StudentPassword = txtPassword.Text.Trim();
 
                 StudentDB.Add(newStu);
+                MessageBox.Show("Account Added");
+                this.Close();
             }
         }
 

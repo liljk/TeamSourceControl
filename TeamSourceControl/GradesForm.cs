@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TeamSourceControl
 {
-    public partial class GradesForm : Form
+    public partial class frmGradesForm : Form
     {
-        public GradesForm()
+        public frmGradesForm()
         {
             InitializeComponent();
         }
