@@ -20,48 +20,60 @@ namespace TeamSourceControl
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int valid = 0;
             if (string.IsNullOrEmpty(txtID.Text) | string.IsNullOrEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Please enter User ID and Password");
-                valid = 1;
             }
             else
             {
-
+                var frmGradesForm = new frmGradesForm();
+                var frmEmployeeForm = new frmEmployeeForm();
                 int exists = 0;
                 string password = null;
 
-                if (valid == 0)
+                SqlConnection con = new SqlConnection();
+                con = StuDB.GetConnection();
+                try
                 {
-                    SqlConnection con = new SqlConnection();
-                    con = StuDB.GetConnection();
-                    try
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("select * from Students join Employees", con);
+                    SqlDataReader r = cmd.ExecuteReader();
+                    while (r.Read())
                     {
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("select * from Students", con);
-                        SqlDataReader r = cmd.ExecuteReader();
-                        while (r.Read())
+                        if (txtID.Text == r["StudentID"].ToString().Trim())
                         {
-                            if (txtID.Text == r["StudentID"].ToString().Trim())
-                            {
-                                exists = 1;
-                                password = r["StudentPassword"].ToString().Trim();
-                            }
+                            exists = 1;
+                            password = r["StudentPassword"].ToString().Trim();
+                        }
+                        else if(txtID.Text == r["EmployeeID"].ToString().Trim())
+                        {
+                            exists = 2;
+                            password = r["EmployeePassword"].ToString().Trim();
                         }
                     }
-                    finally
-                    {
-                        con.Dispose();
-                    }
+                }
+                finally
+                {
+                    con.Dispose();
                 }
 
                 if (exists == 1)
                 {
+                    
                     if (txtPassword.Text == password)
                     {
-                        var frmGradesForm = new frmGradesForm();
                         frmGradesForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Username or Password");
+                    }
+                }
+                else if(exists == 2)
+                {
+                    if(txtPassword.Text == password)
+                    {
+                        frmEmployeeForm.Show();
                     }
                     else
                     {

@@ -1,7 +1,7 @@
-﻿CREATE DATABASE StudentDB
+﻿CREATE DATABASE GradesDB
 GO
 
-USE StudentDB
+USE GradesDB
 GO
 
 CREATE TABLE Students
@@ -13,3 +13,19 @@ CREATE TABLE Students
 	,StudentEmail varchar(100) NULL
 	,StudentPassword varchar(50) NOT NULL
 )
+
+CREATE TABLE Employees
+(
+	EmployeeID int PRIMARY KEY IDENTITY NOT NULL
+	,EmployeeFName varchar(50) NOT NULL
+	,EmployeeLName varchar(50) NOT NULL
+	,EmployeePassword varchar(50) NOT NULL
+	,EmployeeEmail varchar(100) NULL
+	,EmployeeOfficeLocation varchar(100) NULL
+)
+
+--test Employee data
+INSERT INTO Employees
+VALUES 
+	('Bob' + 'Ross' + 'Password' + 'Email' + 'OfficeLocationLocation')
+	,('Van' + 'Gough' + 'NotAPassword' + 'NotAnEmail' + 'NotAnOfficeLocation')
