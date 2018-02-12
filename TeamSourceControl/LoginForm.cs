@@ -26,64 +26,72 @@ namespace TeamSourceControl
             }
             else
             {
-                var frmGradesForm = new frmGradesForm();
-                var frmEmployeeForm = new frmEmployeeForm();
-                int exists = 0;
-                string password = null;
+                int exists;
+                string password;
 
-                SqlConnection con = new SqlConnection();
-                con = StuDB.GetConnection();
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("select * from Students join Employees", con);
-                    SqlDataReader r = cmd.ExecuteReader();
-                    while (r.Read())
-                    {
-                        if (txtID.Text == r["StudentID"].ToString().Trim())
-                        {
-                            exists = 1;
-                            password = r["StudentPassword"].ToString().Trim();
-                        }
-                        else if(txtID.Text == r["EmployeeID"].ToString().Trim())
-                        {
-                            exists = 2;
-                            password = r["EmployeePassword"].ToString().Trim();
-                        }
-                    }
-                }
-                finally
-                {
-                    con.Dispose();
-                }
+                CheckID(out exists, out password);
+                CheckPassword(exists, password);
+            }
+        }
 
-                if (exists == 1)
+        private void CheckPassword(int exists, string password)
+        {
+            var frmGradesForm = new frmGradesForm();
+            var frmEmployeeForm = new frmEmployeeForm();
+
+            if (exists == 1)
+            {
+
+                if (txtPassword.Text == password)
                 {
-                    
-                    if (txtPassword.Text == password)
-                    {
-                        frmGradesForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Username or Password");
-                    }
-                }
-                else if(exists == 2)
-                {
-                    if(txtPassword.Text == password)
-                    {
-                        frmEmployeeForm.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Username or Password");
-                    }
+                    frmGradesForm.Show();
                 }
                 else
                 {
                     MessageBox.Show("Invalid Username or Password");
                 }
+            }
+            else if (exists == 2)
+            {
+                if (txtPassword.Text == password)
+                {
+                    frmEmployeeForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Username or Password");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username or Password");
+            }
+        }
+
+        private void CheckID(out int exists, out string password)
+        {
+            exists = 0;
+            password = null;
+            SqlConnection con = new SqlConnection();
+            con = StuDB.GetConnection();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from Students", con);
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    if (txtID.Text == r["StudentID"].ToString().Trim())
+                    {
+                        exists = 1;
+                        password = r["StudentPassword"].ToString().Trim();
+                    }
+
+                }
+            }
+            finally
+            {
+                con.Dispose();
             }
         }
 
@@ -91,6 +99,11 @@ namespace TeamSourceControl
         {
             var displayAddStudent = new frmAddStudent();
             displayAddStudent.Show();
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
