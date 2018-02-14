@@ -4,9 +4,17 @@ GO
 USE GradesDB
 GO
 
+CREATE TABLE Course
+ (
+ 	CourseID int PRIMARY KEY Identity(100, 15) NOT NULL
+ 	,CourseName varchar(50) NOT NULL
+ 	,CourseDescription varchar(255) NULL
+ )
+
 CREATE TABLE Students
 (
-	StudentID int PRIMARY KEY Identity NOT NULL
+	StudentID int PRIMARY KEY Identity(123454321, 8) NOT NULL
+	,CourseID int FOREIGN KEY REFERENCES Course(CourseID)
 	,StudentFName varchar(50) NOT NULL
 	,StudentLName varchar(50) NOT NULL
 	,BirthDate datetime NULL
@@ -16,7 +24,8 @@ CREATE TABLE Students
 
 CREATE TABLE Employees
 (
-	EmployeeID int PRIMARY KEY IDENTITY NOT NULL
+	EmployeeID int PRIMARY KEY identity(987656789, 3) NOT NULL
+ 	,CourseID int FOREIGN KEY REFERENCES Course(CourseID)
 	,EmployeeFName varchar(50) NOT NULL
 	,EmployeeLName varchar(50) NOT NULL
 	,EmployeePassword varchar(50) NOT NULL
@@ -31,9 +40,3 @@ CREATE TABLE Grades
 	,AssignmentScore int(100) NOT NULL
 	,AssingmentGrade int
 )
-
---test Employee data
-INSERT INTO Employees
-VALUES 
-	('Bob' + 'Ross' + 'Password' + 'Email' + 'OfficeLocationLocation')
-	,('Van' + 'Gough' + 'NotAPassword' + 'NotAnEmail' + 'NotAnOfficeLocation')

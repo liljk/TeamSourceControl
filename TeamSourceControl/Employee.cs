@@ -10,6 +10,8 @@ namespace TeamSourceControl
     {
         public int EmployeeID { get; set; }
 
+        public int CourseID { get; set; }
+
         public string EmployeeFName { get; set; }
 
         public string EmployeeLName { get; set; }
