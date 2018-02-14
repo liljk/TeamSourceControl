@@ -76,18 +76,17 @@ namespace TeamSourceControl
             }
         }
 
-        public static bool Add(Student newStu, int randomID)
+        public static bool Add(Student newStu)
         {
             SqlConnection dbConnection = StuDB.GetConnection();
 
             SqlCommand addCommand = new SqlCommand();
             addCommand.Connection = dbConnection;
             addCommand.CommandText = "INSERT INTO Students " +
-           "(StudentID, StudentFName, StudentLName, BirthDate, StudentEmail, StudentPassword)" +
+           "(StudentFName, StudentLName, BirthDate, StudentEmail, StudentPassword)" +
            "VALUES" +
-           "(@StudentID, @FirstName, @LastName, @BirthDate, @Email, @Password)";
+           "(@FirstName, @LastName, @BirthDate, @Email, @Password)";
 
-            addCommand.Parameters.AddWithValue("@StudentID", randomID);
             addCommand.Parameters.AddWithValue("@FirstName", newStu.StudentFName);
             addCommand.Parameters.AddWithValue("@LastName", newStu.StudentLName);
             addCommand.Parameters.AddWithValue("@BirthDate", newStu.BirthDate);

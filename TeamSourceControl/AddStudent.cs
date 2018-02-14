@@ -33,11 +33,8 @@ namespace TeamSourceControl
                 newStu.StudentEmail = txtEmail.Text.Trim();
                 newStu.StudentPassword = txtPassword.Text.Trim();
 
-                Random rand = new Random();
-                int randomID = rand.Next(100000000, 999999999);
-
-                StudentDB.Add(newStu, randomID);
-                MessageBox.Show("Account Added" + "\n" +  "Your ID is: " + randomID);
+                StudentDB.Add(newStu);
+                MessageBox.Show("Account Added" + "\n" +  "Your ID is: ");
                 this.Close();
             }
         }
