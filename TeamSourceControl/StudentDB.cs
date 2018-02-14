@@ -76,6 +76,13 @@ namespace TeamSourceControl
             }
         }
 
+
+        /// <summary>
+        /// Adds a student to the database with the given values
+        /// and returns a boolean of whether or not it was successful
+        /// </summary>
+        /// <param name="newStu"></param>
+        /// <returns></returns>
         public static bool Add(Student newStu)
         {
             SqlConnection dbConnection = StuDB.GetConnection();
@@ -110,6 +117,34 @@ namespace TeamSourceControl
             }
 
         }
+
+        /// <summary>
+        /// returns the StudentID of the most recent addition to the Student table
+        /// </summary>
+        /// <returns></returns>
+        public static int GetNewStudentID() {
+            SqlConnection con = new SqlConnection();
+            con = StuDB.GetConnection();
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT StudentID FROM Students WHERE StudentID = (SELECT MAX(StudentID) FROM Students)", con);
+                SqlDataReader r = cmd.ExecuteReader();
+                int userID = 0;
+                while (r.Read())
+                {
+                    userID = Convert.ToInt32(r["StudentID"]);
+                }
+                return userID;
+            }
+            finally
+            {
+                con.Dispose();
+            }
+        }
+
+
+
 
         public static bool DeleteStudent(Student stu)
         {

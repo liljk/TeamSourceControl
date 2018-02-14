@@ -26,7 +26,6 @@ namespace TeamSourceControl
             else
             {
                 Student newStu = new Student();
-                //StudentID is identity and set by the database
                 newStu.StudentFName = txtFName.Text.Trim();
                 newStu.StudentLName = txtLName.Text.Trim();
                 newStu.BirthDate = txtBirthDate.Value;
@@ -34,7 +33,7 @@ namespace TeamSourceControl
                 newStu.StudentPassword = txtPassword.Text.Trim();
 
                 StudentDB.Add(newStu);
-                MessageBox.Show("Account Added" + "\n" +  "Your ID is: ");
+                MessageBox.Show("Account Added" + "\n" +  "Your ID is: " + StudentDB.GetNewStudentID());
                 this.Close();
             }
         }
