@@ -77,7 +77,7 @@ namespace TeamSourceControl
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select * from Students", con);
+                SqlCommand cmd = new SqlCommand("select * from Students full join Employees on Students.StudentID = Employees.EmployeeID", con);
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
@@ -85,6 +85,11 @@ namespace TeamSourceControl
                     {
                         exists = 1;
                         password = r["StudentPassword"].ToString().Trim();
+                    }
+                    else if(txtID.Text == r["EmployeeID"].ToString().Trim())
+                    {
+                        exists = 2;
+                        password = r["EmployeePassword"].ToString().Trim();
                     }
 
                 }
