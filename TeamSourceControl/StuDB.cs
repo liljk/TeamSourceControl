@@ -11,7 +11,7 @@ namespace TeamSourceControl
     {
         public static SqlConnection GetConnection()
         {
-            return new SqlConnection(@"Data Source=jhoon\sqlexpress;Initial Catalog=GradesDB;Integrated Security=True");
+            return new SqlConnection(@"Data Source=localhost;Initial Catalog=GradesDB;Integrated Security=True");
         }
     }
 }
