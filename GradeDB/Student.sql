@@ -24,6 +24,14 @@ CREATE TABLE Employees
 	,EmployeeOfficeLocation varchar(100) NULL
 )
 
+CREATE TABLE Grades
+(
+	Assignment int PRIMARY KEY IDENTITY NOT NULL
+	,StudentScore	 int	NOT NULL
+	,AssignmentScore int(100) NOT NULL
+	,AssingmentGrade int
+)
+
 --test Employee data
 INSERT INTO Employees
 VALUES 
