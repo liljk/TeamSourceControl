@@ -3,6 +3,13 @@ GO
 
 USE GradesDB
 GO
+ 
+CREATE TABLE Course
+(
+	CourseID int PRIMARY KEY Identity(100, 15) NOT NULL
+	,CourseName varchar(50) NOT NULL
+	,CourseDescription varchar(255) NULL
+)
 
 CREATE TABLE Students
 (
@@ -26,14 +33,21 @@ CREATE TABLE Employees
 
 CREATE TABLE Grades
 (
-	Assignment int PRIMARY KEY IDENTITY NOT NULL
-	,StudentScore	 int	NOT NULL
-	,AssignmentScore int(100) NOT NULL
-	,AssingmentGrade int
+	StudentID int REFERENCES Students(StudentID )
+	,CourseID int REFERENCES Course(CourseID)
+	,Assignment varchar NOT NULL
+	,AssignmentGrade tinyint NOT NULL
+	,StudentScore tinyint NOT NULL
+	,StudentGrade tinyint NOT NULL
 )
+
 
 --test Employee data
 INSERT INTO Employees
 VALUES 
-	('Bob' + 'Ross' + 'Password' + 'Email' + 'OfficeLocationLocation')
-	,('Van' + 'Gough' + 'NotAPassword' + 'NotAnEmail' + 'NotAnOfficeLocation')
+	('Bob', 'Ross', 'Password', 'Email', 'OfficeLocationLocation')
+	,('Van', 'Gough', 'NotAPassword', 'NotAnEmail', 'NotAnOfficeLocation')
+
+--INSERT INTO Grades
+--VALUES
+	--(

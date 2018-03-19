@@ -40,69 +40,78 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 18);
+            this.label1.Location = new System.Drawing.Point(20, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(141, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Assignments:";
             // 
             // lstAssignments
             // 
             this.lstAssignments.FormattingEnabled = true;
-            this.lstAssignments.Location = new System.Drawing.Point(13, 43);
+            this.lstAssignments.ItemHeight = 25;
+            this.lstAssignments.Location = new System.Drawing.Point(26, 83);
+            this.lstAssignments.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lstAssignments.Name = "lstAssignments";
-            this.lstAssignments.Size = new System.Drawing.Size(80, 134);
+            this.lstAssignments.Size = new System.Drawing.Size(156, 254);
             this.lstAssignments.TabIndex = 1;
+            this.lstAssignments.SelectedIndexChanged += new System.EventHandler(this.lstAssignments_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 209);
+            this.label2.Location = new System.Drawing.Point(20, 402);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(151, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Overall Grade:";
             // 
             // txtOverallGrade
             // 
-            this.txtOverallGrade.Location = new System.Drawing.Point(91, 206);
+            this.txtOverallGrade.Location = new System.Drawing.Point(182, 396);
+            this.txtOverallGrade.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtOverallGrade.Name = "txtOverallGrade";
             this.txtOverallGrade.ReadOnly = true;
-            this.txtOverallGrade.Size = new System.Drawing.Size(24, 20);
+            this.txtOverallGrade.Size = new System.Drawing.Size(44, 31);
             this.txtOverallGrade.TabIndex = 3;
             // 
             // btnViewGrade
             // 
-            this.btnViewGrade.Location = new System.Drawing.Point(124, 43);
+            this.btnViewGrade.Location = new System.Drawing.Point(248, 83);
+            this.btnViewGrade.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnViewGrade.Name = "btnViewGrade";
-            this.btnViewGrade.Size = new System.Drawing.Size(102, 49);
+            this.btnViewGrade.Size = new System.Drawing.Size(204, 94);
             this.btnViewGrade.TabIndex = 4;
             this.btnViewGrade.Text = "View Grade";
             this.btnViewGrade.UseVisualStyleBackColor = true;
             // 
             // btnTestGrade
             // 
-            this.btnTestGrade.Location = new System.Drawing.Point(124, 128);
+            this.btnTestGrade.Location = new System.Drawing.Point(248, 246);
+            this.btnTestGrade.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnTestGrade.Name = "btnTestGrade";
-            this.btnTestGrade.Size = new System.Drawing.Size(102, 49);
+            this.btnTestGrade.Size = new System.Drawing.Size(204, 94);
             this.btnTestGrade.TabIndex = 5;
             this.btnTestGrade.Text = "Test Grade";
             this.btnTestGrade.UseVisualStyleBackColor = true;
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(139, 204);
+            this.btnLogout.Location = new System.Drawing.Point(278, 392);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.Size = new System.Drawing.Size(150, 44);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
             // 
             // frmGradesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(238, 251);
+            this.ClientSize = new System.Drawing.Size(476, 483);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnTestGrade);
             this.Controls.Add(this.btnViewGrade);
@@ -110,8 +119,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstAssignments);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "frmGradesForm";
             this.Text = "Grades";
+            this.Load += new System.EventHandler(this.frmGradesForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

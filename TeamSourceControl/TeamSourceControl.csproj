@@ -45,29 +45,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddStudent.cs">
+    <Compile Include="Forms\AddStudent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddStudent.Designer.cs">
+    <Compile Include="Forms\AddStudent.Designer.cs">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeForm.cs">
+    <Compile Include="Forms\EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeForm.Designer.cs">
+    <Compile Include="Forms\EmployeeForm.Designer.cs">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Grade.cs" />
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GradesForm.cs">
+    <Compile Include="Forms\GradesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GradesForm.Designer.cs">
+    <Compile Include="Forms\GradesForm.Designer.cs">
       <DependentUpon>GradesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -75,16 +76,16 @@
     <Compile Include="StuDB.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentDB.cs" />
-    <EmbeddedResource Include="AddStudent.resx">
+    <EmbeddedResource Include="Forms\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeForm.resx">
+    <EmbeddedResource Include="Forms\EmployeeForm.resx">
       <DependentUpon>EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GradesForm.resx">
+    <EmbeddedResource Include="Forms\GradesForm.resx">
       <DependentUpon>GradesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
